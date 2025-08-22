@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>تسجيل دخول الإدارة</title>
+</head>
+<body>
+  <h2>🔑 تسجيل دخول الإدارة</h2>
+  {% if error %}<p style="color:red">{{ error }}</p>{% endif %}
+  <form method="POST">
+    <label>اسم المستخدم:</label>
+    <input type="text" name="username" required><br><br>
+    <label>كلمة المرور:</label>
+    <input type="password" name="password" required><br><br>
+    <button type="submit">دخول</button>
+  </form>
+</body>
+</html>

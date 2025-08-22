@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>لوحة الإدارة</title>
+</head>
+<body>
+  <h1>📊 لوحة الإدارة</h1>
+  <p><a href="/logout">🚪 تسجيل الخروج</a></p>
+  <p><a href="/">⬅️ الرجوع للصفحة الرئيسية</a></p>
+
+  {% if orders %}
+    <table border="1" cellpadding="6">
+      <tr>
+        <th>ID</th>
+        <th>ترابيزة</th>
+        <th>الطلب</th>
+        <th>الحالة</th>
+        <th>تحكم</th>
+      </tr>
+      {% for o in orders %}
+      <tr>
+        <td>{{ o.id }}</td>
+        <td>{{ o.table }}</td>
+        <td>{{ o.item }}</td>
+        <td>{{ o.status }}</td>
+        <td>
+          <a href="/update/{{ o.id }}/Preparing">تحضير 🍳</a> |
+          <a href="/update/{{ o.id }}/Accepted">قبول ✅</a> |
+          <a href="/update/{{ o.id }}/Cancelled">إلغاء ❌</a>
+        </td>
+      </tr>
+      {% endfor %}
+    </table>
+  {% else %}
+    <p>لا توجد طلبات.</p>
+  {% endif %}
+</body>
+</html>

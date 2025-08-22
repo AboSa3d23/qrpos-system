@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>الصفحة الرئيسية</title>
+</head>
+<body>
+  <h1>✅ نظام الطلبات</h1>
+
+  <form action="/order" method="POST">
+    <label>رقم الترابيزة:</label>
+    <input type="number" name="table" min="1" required>
+    <label>الطلب:</label>
+    <input type="text" name="item" required>
+    <button type="submit">تسجيل الطلب</button>
+  </form>
+
+  <p><a href="/login">➡️ دخول صفحة الإدارة</a></p>
+
+  <h2>الطلبات الحالية</h2>
+  {% if orders %}
+    <table border="1" cellpadding="6">
+      <tr>
+        <th>ID</th>
+        <th>ترابيزة</th>
+        <th>الطلب</th>
+        <th>الحالة</th>
+      </tr>
+      {% for o in orders %}
+      <tr>
+        <td>{{ o.id }}</td>
+        <td>{{ o.table }}</td>
+        <td>{{ o.item }}</td>
+        <td>{{ o.status }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+  {% else %}
+    <p>لا توجد طلبات حتى الآن.</p>
+  {% endif %}
+
+  <script>
+    // تحديث تلقائي كل 5 ثواني عشان الزبون يشوف الحالة بتتغيّر
+    setTimeout(() => location.reload(), 60000);
+  </script>
+</body>
+</html>
